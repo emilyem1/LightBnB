@@ -1,5 +1,3 @@
-const properties = require("./json/properties.json");
-const users = require("./json/users.json");
 const { Pool } = require('pg');
 
 const pool = new Pool({
@@ -109,7 +107,7 @@ const getAllProperties = function(options, limit = 10) {
     JOIN property_reviews ON properties.id = property_id
     GROUP BY properties.id
   `;
-  const havingConditions = []; // Array to hold HAVING conditions
+  const havingConditions = [];
   if (options.city) {
     queryParams.push(`%${options.city}%`);
     havingConditions.push(`city LIKE $${queryParams.length}`);
@@ -123,7 +121,7 @@ const getAllProperties = function(options, limit = 10) {
     havingConditions.push(`cost_per_night >= $${queryParams.length}`);
   }
   if (options.maximum_price_per_night) {
-    queryParams.push(options.maximum_price_per_night * 100); // Convert to cents
+    queryParams.push(options.maximum_price_per_night * 100);
     havingConditions.push(`cost_per_night <= $${queryParams.length}`);
   }
   if (options.minimum_rating) {

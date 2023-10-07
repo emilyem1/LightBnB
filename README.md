@@ -1,6 +1,7 @@
 # LightBnB
 
-LightBnB is a simple multi-age Airbnb clone that uses a server-side Javascript to display the information from queries to web pages via SQL queries.
+LightBnB is a simple multi-page Airbnb clone that uses a server-side Javascript to display the information from queries to web pages via SQL queries.
+
 ## Getting Started
 
 1. Clone the repository onto your local device.
